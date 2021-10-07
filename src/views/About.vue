@@ -12,21 +12,21 @@
     <div class="about-social">
       <h3 class="social-title">You can find me there:</h3>
       <div class="social-icons">
-        <font-awesome-icon
-          :icon="['fab', 'linkedin']"
-          size="2x"
-          class="social-icon"
-        />
-        <font-awesome-icon
-          :icon="['fab', 'twitter']"
-          size="2x"
-          class="social-icon"
-        />
-        <font-awesome-icon
-          :icon="['fab', 'github']"
-          size="2x"
-          class="social-icon"
-        />
+        <social-icon
+          prefix="fab"
+          name="linkedin"
+          link="https://www.linkedin.com/in/kamil-wojtol/"
+        ></social-icon>
+        <social-icon
+          prefix="fab"
+          name="twitter"
+          link="https://twitter.com/kamilwojtol"
+        ></social-icon>
+        <social-icon
+          prefix="fab"
+          name="github"
+          link="https://github.com/kamilwojtol"
+        ></social-icon>
       </div>
     </div>
   </div>
@@ -71,17 +71,6 @@ export default {};
 
   .social-icons {
     margin: 10px 0;
-
-    .social-icon {
-      margin: 0 10px;
-      transition: 0.7s all ease-in-out;
-
-      &:hover {
-        cursor: pointer;
-        color: #94c973;
-        transition: 0.7s all ease-in-out;
-      }
-    }
   }
 }
 </style>
