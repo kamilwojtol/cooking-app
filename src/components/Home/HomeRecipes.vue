@@ -1,12 +1,20 @@
 <template>
-  <p>{{ this.recipe.title }}</p>
-  <img :src="this.recipe.image" alt="Tasty food" />
-  <p>Ingredients</p>
-  <ul>
-    <li v-for="item in recipe.extendedIngredients" :key="item.id">
-      <p>{{ item.originalString }}</p>
-    </li>
-  </ul>
+  <img class="recipe-image" :src="this.recipe.image" alt="Tasty food" />
+  <div class="recipe-container">
+    <h2 class="recipe-title">{{ this.recipe.title }}</h2>
+    <h3 class="recipe-subtitle">Ingredients</h3>
+    <ul class="recipe-list">
+      <li
+        class="recipe-list-item"
+        v-for="item in recipe.extendedIngredients"
+        :key="item.id"
+      >
+        <p class="recipe-text">{{ item.originalString }}</p>
+      </li>
+    </ul>
+    <h3 class="recipe-subtitle">Recipe</h3>
+    <p class="recipe-text">{{ this.recipeText }}</p>
+  </div>
 </template>
 
 <script>
@@ -16,6 +24,7 @@ export default {
   data() {
     return {
       recipe: [],
+      recipeText: "",
     };
   },
   methods: {
@@ -27,10 +36,14 @@ export default {
         .then((response) => {
           if (response.status == 200) {
             this.recipe = response.data.recipes[0];
-            console.log(this.recipe);
+            this.recipeText = this.recipe.instructions.replace(
+              /<\/?[^>]+(>|$)/g,
+              " "
+            );
           }
         });
     },
+    getMainColor() {},
   },
   mounted() {
     this.getRandomRecipes();
@@ -39,4 +52,54 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.recipe-image {
+  height: 350px;
+  width: 100vw;
+  object-fit: cover;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.recipe-container {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color: #fff;
+  padding: 0 20px;
+
+  .recipe-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    padding-top: 50px;
+  }
+
+  .recipe-subtitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #94c973;
+  }
+
+  .recipe-text {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .recipe-list {
+    margin-bottom: 20px;
+    list-style-type: none;
+
+    .recipe-list-item {
+      padding: 10px 5px;
+      line-height: 3;
+
+      .recipe-text {
+        font-weight: 400;
+      }
+    }
+  }
+}
 </style>

@@ -9,6 +9,12 @@
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,6 +24,7 @@
 }
 
 #nav {
+  height: 300px;
   padding: 30px;
 
   a {
