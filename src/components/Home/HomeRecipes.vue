@@ -15,12 +15,25 @@
     <h3 class="recipe-subtitle">Recipe</h3>
     <p class="recipe-text">{{ this.recipeText }}</p>
   </div>
+  <div class="menu-container">
+    <router-link to="/list">
+      <social-icon prefix="fa" name="list"></social-icon>
+    </router-link>
+    <social-icon prefix="fa" name="heart"></social-icon>
+    <social-icon
+      prefix="fa"
+      name="arrow-right"
+      @click="getRandomRecipes"
+    ></social-icon>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import SocialIcon from "../About/SocialIcon.vue";
 
 export default {
+  components: { SocialIcon },
   data() {
     return {
       recipe: [],
@@ -101,5 +114,17 @@ export default {
       }
     }
   }
+}
+
+.menu-container {
+  position: fixed;
+  bottom: 40px;
+  left: calc(50vw - 100px);
+  background-color: #fff;
+  padding: 10px 30px;
+  border-radius: 25px;
+  -webkit-box-shadow: 8px 8px 22px -11px rgba(66, 68, 90, 0.45);
+  -moz-box-shadow: 8px 8px 22px -11px rgba(66, 68, 90, 0.45);
+  box-shadow: 8px 8px 22px -11px rgba(66, 68, 90, 0.45);
 }
 </style>
