@@ -19,7 +19,7 @@
     <router-link to="/list">
       <social-icon prefix="fa" name="list"></social-icon>
     </router-link>
-    <social-icon prefix="fa" name="heart"></social-icon>
+    <social-icon prefix="fa" name="heart" @click="addToFavs"></social-icon>
     <social-icon
       prefix="fa"
       name="arrow-right"
@@ -56,7 +56,9 @@ export default {
           }
         });
     },
-    getMainColor() {},
+    addToFavs() {
+      this.$store.commit("updateRecipe", this.recipe);
+    },
   },
   mounted() {
     this.getRandomRecipes();

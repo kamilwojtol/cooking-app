@@ -18,12 +18,24 @@ library.add(faLinkedin, faTwitter, faGithub, faArrowRight, faHeart, faList);
 const store = createStore({
   state() {
     return {
-      recipe: []
+      favs: []
     }
   },
   mutations: {
     updateRecipe(state, payload) {
-      state.recipe = payload;
+      state.favs.push(payload);
+      console.log(state.favs);
+    },
+
+    removeRecipe(state, recipe) {
+      let item = state.favs.indexOf(recipe);
+
+      state.favs.splice(item, 1);
+    }
+  },
+  getters: {
+    recipeList(state) {
+      return state.favs;
     }
   }
 })
