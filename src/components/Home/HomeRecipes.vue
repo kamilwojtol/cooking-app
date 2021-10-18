@@ -1,30 +1,32 @@
 <template>
-  <img class="recipe-image" :src="this.recipe.image" alt="Tasty food" />
-  <div class="recipe-container">
-    <h2 class="recipe-title">{{ this.recipe.title }}</h2>
-    <h3 class="recipe-subtitle">Ingredients</h3>
-    <ul class="recipe-list">
-      <li
-        class="recipe-list-item"
-        v-for="item in recipe.extendedIngredients"
-        :key="item.id"
-      >
-        <p class="recipe-text">{{ item.originalString }}</p>
-      </li>
-    </ul>
-    <h3 class="recipe-subtitle">Recipe</h3>
-    <p class="recipe-text">{{ this.recipeText }}</p>
-  </div>
-  <div class="menu-container">
-    <router-link to="/list">
-      <social-icon prefix="fa" name="list"></social-icon>
-    </router-link>
-    <social-icon prefix="fa" name="heart" @click="addToFavs"></social-icon>
-    <social-icon
-      prefix="fa"
-      name="arrow-right"
-      @click="getRandomRecipes"
-    ></social-icon>
+  <div class="container">
+    <img class="recipe-image" :src="this.recipe.image" alt="Tasty food" />
+    <div class="recipe-container">
+      <h2 class="recipe-title">{{ this.recipe.title }}</h2>
+      <h3 class="recipe-subtitle">Ingredients</h3>
+      <ul class="recipe-list">
+        <li
+          class="recipe-list-item"
+          v-for="item in recipe.extendedIngredients"
+          :key="item.id"
+        >
+          <p class="recipe-text">{{ item.originalString }}</p>
+        </li>
+      </ul>
+      <h3 class="recipe-subtitle">Recipe</h3>
+      <p class="recipe-text">{{ this.recipeText }}</p>
+    </div>
+    <div class="menu-container">
+      <router-link to="/list">
+        <social-icon prefix="fa" name="list"></social-icon>
+      </router-link>
+      <social-icon prefix="fa" name="heart" @click="addToFavs"></social-icon>
+      <social-icon
+        prefix="fa"
+        name="arrow-right"
+        @click="getRandomRecipes"
+      ></social-icon>
+    </div>
   </div>
 </template>
 
@@ -67,6 +69,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media (min-width: 1000px) {
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .recipe-image {
+      height: 350px;
+      max-width: 800px;
+      object-fit: cover;
+      margin-bottom: 20px;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 400px);
+      z-index: -1;
+    }
+  }
+}
+
 .recipe-image {
   height: 350px;
   width: 100vw;

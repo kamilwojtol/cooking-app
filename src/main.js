@@ -11,9 +11,9 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faArrowRight, faHeart, faList } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faHeart, faList, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faLinkedin, faTwitter, faGithub, faArrowRight, faHeart, faList);
+library.add(faLinkedin, faTwitter, faGithub, faArrowRight, faHeart, faList, faTrash);
 
 const store = createStore({
   state() {

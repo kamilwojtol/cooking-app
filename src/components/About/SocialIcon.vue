@@ -17,12 +17,15 @@ export default {
 <style lang="scss" scoped>
 .social-icon {
   margin: 0 10px;
-  transition: 0.7s all ease-in-out;
+  transition: 0.3s all ease-in-out;
 
   &:hover {
     cursor: pointer;
-    color: #94c973;
-    transition: 0.7s all ease-in-out;
+    transition: 0.3s all ease-in-out;
+  }
+
+  &:visited {
+    color: #444;
   }
 }
 
